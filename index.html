@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Caso 1 - Imigrantes nos EUA</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>Caso 1: proporção de imigrantes nos EUA (1850 a 2024)</h1>
+
+    <h2>Original</h2>
+    <p>
+        Par de gráficos publicado por Hans-Jörg Schulz e criticado por Kaiser Fung no post
+        <a href="https://www.junkcharts.com/mirror-images/">"Mirror images"</a> do Junk Charts (28/09/2026).
+        Os dois usam o mesmo dado do Pew Research Center (1910 a 2013), mas o primeiro mostra os imigrantes
+        (eixo de 0 a 16%) e o segundo mostra os não imigrantes (eixo de 0 a 100%).
+    </p>
+    <div class="originais">
+        <img src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/2026/09/hansjorgschulz_immigration_1.jpg"
+             alt="Gráfico original 1">
+        <img src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/2026/09/hansjorgschulz_immigration_2.jpg"
+             alt="Gráfico original 2">
+    </div>
+
+    <h2>Design A: linha da porcentagem de imigrantes</h2>
+    <svg id="designA"></svg>
+
+    <h2>Design B: número de imigrantes e porcentagem</h2>
+    <svg id="designB"></svg>
+
+    <p class="fonte">
+        Fonte dos dados: U.S. Census Bureau (Gibson e Lennon, 1999; Gibson e Jung, 2006; ACS 2010 e 2024).
+    </p>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

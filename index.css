@@ -1,0 +1,72 @@
+body {
+    margin: 20px;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1em;
+}
+
+.originais {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.originais img {
+    width: 390px;
+    border: #bfbfbf solid 1px;
+}
+
+svg {
+    background-color: #ffffff;
+
+    border-radius: 8px;
+    border: #bfbfbf solid 1px;
+
+    height: 400px;
+    width: 800px;
+}
+
+/* Design A */
+.linha {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2;
+}
+
+circle {
+    fill: steelblue;
+}
+
+.faixa {
+    fill: #e8eef5;
+}
+
+/* Design B */
+.barra {
+    fill: #9ACBD0;
+}
+
+.barra.destaque {
+    fill: #006A71;
+}
+
+.pct {
+    font-size: 11px;
+}
+
+/* textos dentro dos graficos */
+.rotulo {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nota {
+    font-size: 12px;
+    fill: #555555;
+}
+
+.fonte {
+    font-size: 0.8em;
+    color: #555555;
+}
