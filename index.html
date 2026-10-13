@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Caso 1 - Imigrantes nos EUA</title>
+    <title>Visualização de dados - Casos 1 e 2</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -34,7 +34,34 @@
         Fonte dos dados: U.S. Census Bureau (Gibson e Lennon, 1999; Gibson e Jung, 2006; ACS 2010 e 2024).
     </p>
 
+    <!-- Caso 2 integrado abaixo; IDs exclusivos preservam os gráficos do Caso 1. -->
+    <section id="caso2">
+        <h1>Caso 2: produção de queijo na Europa (2024)</h1>
+        <h2>Original</h2>
+        <p>Infográfico do Eurostat analisado por Kaiser Fung no artigo
+            <a href="https://www.junkcharts.com/a-cheesy-graphic/">A cheesy graphic</a>
+            do Junk Charts (28/01/2026). Compara Alemanha, França e Itália usando desenhos de queijos.</p>
+        <img class="original"
+            src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2026/01/jorgecamoes_eurostatcheeses.jpg"
+            alt="Infográfico do Eurostat com queijos de tamanhos e recortes diferentes: Alemanha 2,4 milhões de toneladas, França 1,9 e Itália 1,4, em 2024.">
+        <p>Os valores publicados são arredondados e o dado francês é provisório. Estes são os três países do original,
+            não toda a produção da União Europeia.</p>
+        <p id="statusCaso2" role="status">Carregando dados do Caso 2…</p>
+        <h2>Design A: gráfico de pontos da produção</h2>
+        <svg id="caso2DesignA" viewBox="0 0 800 300" role="img"
+            aria-label="Produção em 2024: Alemanha 2,4, França 1,9 e Itália 1,4 milhões de toneladas"></svg>
+        <h2>Design B: matrizes de 100 pontos, Alemanha = 100</h2>
+        <p>Azul: produção relativa à Alemanha. Cinza: diferença até a referência alemã.
+            Um ponto equivale a 1% da produção da Alemanha, não à participação no total europeu.
+            O preenchimento é arredondado para pontos inteiros.</p>
+        <svg id="caso2DesignB" viewBox="0 0 800 270" role="img"
+            aria-label="Matrizes com Alemanha 100%, França 79,2% e Itália 58,3% da produção alemã"></svg>
+        <p class="fonte">Fonte: Eurostat, Key figures on the European food chain — edição 2025,
+            dados de 2024. <a href="queijos_europa.csv">Dados CSV</a>.
+            <a href="https://ec.europa.eu/eurostat/databrowser/product/view/tag00040">Base de dados Eurostat</a>.</p>
+    </section>
     <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/main_caso2.js"></script>
 </body>
 
 </html>

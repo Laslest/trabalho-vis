@@ -70,3 +70,12 @@ circle {
     font-size: 0.8em;
     color: #555555;
 }
+
+/* Todas as regras ficam no Caso 2 para preservar a aparência do Caso 1. */
+#caso2 { margin-top: 50px; border-top: 1px solid #bfbfbf; padding-top: 20px; }
+#caso2 svg { width: 800px; max-width: 100%; height: auto; }
+#caso2 .guia { stroke: #e5e5e5; }
+#caso2 .producao { fill: steelblue; }
+#caso2 .diferenca { fill: #e0e0e0; }
+#caso2 .original { width: 600px; max-width: 100%; border: 1px solid #bfbfbf; }
+#statusCaso2 { font-size: 0.9em; }
