@@ -17,6 +17,13 @@ partes de um total. Os três casos aparecem na mesma página HTML, cada um com s
 original e dois redesigns. Os critérios de seleção foram a presença de um problema
 visual identificável, dados disponíveis e tarefas que justificassem duas propostas distintas.
 
+O projeto segue a estrutura dos exemplos da aula (Vite, D3.js e DuckDB-Wasm). Para rodar,
+basta usar `npm install` e depois `npm run dev`. Cada caso tem um CSV na pasta `public/`,
+uma classe que carrega esse CSV no DuckDB (`imigracao.js`, `queijos.js` e `preocupacoes.js`),
+um arquivo com as consultas SQL (`main.js`, `main_caso2.js` e `main_caso3.js`) e um arquivo
+com os dois gráficos em D3 (`plot.js`, `plot_caso2.js` e `plot_caso3.js`). O `config.js`,
+que inicia o DuckDB, é o mesmo usado nos exemplos da aula.
+
 ## 2. Análise dos casos
 
 ### 2.1. Caso 1 — Proporção de imigrantes nos EUA
@@ -172,6 +179,14 @@ DuckDB-Wasm valida três países distintos, valores positivos, o ano 2024 e a
 presença da referência. SQL ordena as produções e calcula o índice. D3 implementa
 as escalas, eixos e marcas, sem bibliotecas de visualização de alto nível.
 
+| Aspecto | Design A | Design B |
+|---|---|---|
+| Tarefa principal | ranking e diferença absoluta entre os países | comparar cada país com a Alemanha |
+| Marca e canal | pontos, posição horizontal num eixo comum | pontos em matriz 10×10, quantidade de pontos preenchidos |
+| Melhoria | troca os desenhos em perspectiva por uma escala comum começando no zero | mostra a proporção em relação à Alemanha com unidades iguais, sem área ambígua |
+| Trade-off | não mostra direto a diferença relativa | arredonda o preenchimento e exige entender que 100 = Alemanha, não o total da UE |
+| Contexto de uso | notícia ou relatório que compara os volumes | explicar rápido quanto França e Itália produzem perto da Alemanha |
+
 ### 2.3. Caso 3 — Preocupações nos Estados Unidos (2024–2025)
 
 #### Original e contexto
@@ -217,8 +232,9 @@ por Cleveland e McGill, posições numa escala comum favorecem comparações mai
 
 Cada pizza pode representar a parcela que citou um tema e seu complemento, mas o
 conjunto não constitui uma divisão única da população em dez grupos. A repetição de
-pizzas exige explicar essa distinção. Cores diferentes e ilustrações identificam os
-temas, mas não oferecem uma escala quantitativa comum. A disposição em grade também
+pizzas exige explicar essa distinção. Os tons de vermelho mudam conforme o valor (mais
+escuro para os maiores), mas só repetem o que os rótulos já dizem e não oferecem uma
+escala quantitativa comum. A disposição em grade também
 interrompe a leitura sequencial de um ranking.
 
 #### Design A — Barras horizontais
@@ -314,11 +330,12 @@ As imagens originais dos três casos foram incluídas localmente, com seus créd
 - GIBSON, C.; JUNG, K. Historical Census Statistics on the Foreign-Born Population of the United States: 1850 to 2000. U.S. Census Bureau, Working Paper 81, 2006.
 - GRYN, T.; SMITH, A. Foreign-Born Population in the United States Changed Significantly in Both Numbers and Countries of Origin. U.S. Census Bureau, 21 jul. 2026.
 - MUNZNER, T. Visualization Analysis and Design. CRC Press, 2014.
-- CLEVELAND, W.; McGILL, R. Graphical Perception. Journal of the American Statistical Association, 1984.
-- [Junk Charts — A cheesy graphic](https://www.junkcharts.com/a-cheesy-graphic/).
-- [Imagem original analisada](https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2026/01/jorgecamoes_eurostatcheeses.jpg).
-- [Eurostat — Key figures on the European food chain, edição 2025](https://ec.europa.eu/eurostat/documents/15216629/22711561/KS-01-25-049-EN-N.pdf/86247e8d-0fb6-1fff-f14a-6c25114cb138).
-- [Eurostat — tabela Production of cheese, tag00040](https://ec.europa.eu/eurostat/databrowser/product/view/tag00040).
-- [FUNG, K. Ten pie charts. Are you worried yet? Junk Charts, 27 out. 2025](https://www.junkcharts.com/ten-pie-charts-are-you-worried-yet/).
-- [STATISTA. What Americans Worry About. Consumer Insights](https://www.statista.com/chart/35340/respondents-rank-issues-united-states/). Recorte histórico: out. 2024–set. 2025, reproduzido no Junk Charts.
-- [Imagem histórica da Statista utilizada na transcrição](https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2025/10/statista_americanworries.jpeg).
+- CLEVELAND, W. S.; McGILL, R. Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods. Journal of the American Statistical Association, v. 79, n. 387, p. 531-554, 1984.
+- BERINATO, S. Good Charts Workbook. Boston: Harvard Business Review Press, 2019.
+- FUNG, K. A cheesy graphic. Junk Charts, 28 jan. 2026. https://www.junkcharts.com/a-cheesy-graphic/
+- EUROSTAT. Key figures on the European food chain – 2025 edition. Luxemburgo: Publications Office of the European Union, 2025. https://ec.europa.eu/eurostat/documents/15216629/22711561/KS-01-25-049-EN-N.pdf/86247e8d-0fb6-1fff-f14a-6c25114cb138
+- EUROSTAT. Production of cheese (tag00040). https://ec.europa.eu/eurostat/databrowser/product/view/tag00040
+- FUNG, K. Ten pie charts. Are you worried yet? Junk Charts, 27 out. 2025. https://www.junkcharts.com/ten-pie-charts-are-you-worried-yet/
+- STATISTA. What Americans Worry About. Statista Consumer Insights, 2025. https://www.statista.com/chart/35340/respondents-rank-issues-united-states/
+- Imagem do infográfico do Eurostat reproduzida no Junk Charts: https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2026/01/jorgecamoes_eurostatcheeses.jpg
+- Imagem do infográfico da Statista reproduzida no Junk Charts: https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2025/10/statista_americanworries.jpeg
