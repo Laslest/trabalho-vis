@@ -1,52 +1,79 @@
-# Casos 1 e 2 — Visualização de dados
+# Trabalho de visualização de dados — três casos
 
-Projeto no padrão dos exemplos da aula: Vite + D3.js + DuckDB-Wasm.
+Aplicação única com três visualizações originais analisadas e seis redesigns em D3.js.
+O projeto segue a estrutura dos exemplos da aula: Vite, módulos JavaScript e DuckDB-Wasm.
 
-## Como rodar
+## Como abrir e executar
 
-```sh
-npm install
-npm run dev
+1. Extraia o ZIP usando **Extrair tudo** no Windows.
+2. No VS Code, use **Arquivo → Abrir Pasta** e escolha a pasta `trabalho-vis-integrado`, que contém `package.json`, `index.html` e este README. Não abra o ZIP diretamente.
+3. Abra **Terminal → Novo Terminal** nessa pasta.
+4. Com Node.js e npm instalados, execute:
+
+```powershell
+npm.cmd install
+npm.cmd run dev
 ```
 
-Abra o endereço mostrado pelo Vite. Os dois casos estão no mesmo `index.html`;
-para ir diretamente ao segundo, use `/#caso2`.
+No macOS/Linux, use `npm install` e `npm run dev`.
+Abra no navegador o endereço mostrado pelo Vite (normalmente `http://localhost:5173`).
+Não é necessário instalar DuckDB separadamente: DuckDB-Wasm executa no navegador.
+Não abra `index.html` com duplo clique, pois os módulos e arquivos de dados precisam do servidor.
 
-## Caso 1 — Imigrantes nos EUA
+Se aparecer `ENOENT` ou “Could not read package.json”, o terminal está na pasta errada.
+Abra a pasta que contém esse arquivo; a extração do ZIP pode criar uma pasta externa adicional.
 
-- `public/imigracao_eua.csv`: ano, imigrantes e população.
-- `src/config.js`: carregamento compartilhado do DuckDB.
-- `src/imigracao.js`: carregamento e consultas do Caso 1.
-- `src/main.js`: consultas SQL e chamada dos gráficos.
-- `src/plot.js`: linha e barras em D3.
+## Casos integrados
 
-## Caso 2 — Produção de queijo na Europa
+| Caso | Original analisado no Junk Charts | Design A | Design B |
+|---|---|---|---|
+| 1 — Imigração nos EUA | Mirror images | Linha da porcentagem | Barras do número de imigrantes, com porcentagens nos rótulos |
+| 2 — Queijos na Europa | A cheesy graphic | Pontos da produção | Matrizes de 100 pontos, Alemanha = 100 |
+| 3 — Preocupações nos EUA | Ten pie charts. Are you worried yet? | Barras horizontais | Diferenças em pontos percentuais para um tema escolhido |
 
-Novo exemplo: **A cheesy graphic**, publicado no Junk Charts em 28/01/2026,
-com o infográfico do Eurostat sobre Alemanha, França e Itália em 2024.
-Substitui o exemplo anterior sobre preocupações nos Estados Unidos.
+Os três casos estão no mesmo `index.html`. Os links no início da página levam a cada seção.
+A parte sobre preocupações segue os mesmos títulos “Original”, “Design A” e “Design B”, fontes e organização dos colegas.
 
-- `public/queijos_europa.csv`: produção arredondada em milhões de toneladas.
-- `src/queijos.js`: classe que carrega o CSV e consulta o DuckDB.
-- `src/main_caso2.js`: validação, ordenação e índice relativo à Alemanha em SQL.
-- `src/plot_caso2.js`: pontos e matrizes de 100 pontos em D3.
-- `index.css`: estilos dos dois casos; regras do Caso 2 limitadas à seção `#caso2`.
-- `relatorio.md`: relatório único com introdução, análise dos casos, discussão final e referências.
+## Onde editar
 
-O código JavaScript e os dados do Caso 1 permanecem iguais ao original.
-O HTML recebe uma seção adicional e um segundo módulo, com IDs exclusivos.
-O Caso 2 usa `addEventListener` para não substituir `window.onload` do Caso 1.
-As matrizes mostram um índice: Alemanha = 100. Não representam participação
-no total da União Europeia. Os valores são arredondados e o dado francês é provisório.
+- `index.html`: títulos, textos, fontes exibidas na página e imagens originais.
+- `index.css`: aparência; estilos dos Casos 2 e 3 estão limitados às respectivas seções.
+- `relatorio.md`: relatório final integrado, com introdução, três análises, discussão e referências bibliográficas na seção 4.
+- `relatorio_caso1.md`: documento anterior do Caso 1, mantido como registro; o relatório de entrega é `relatorio.md`.
+- `public/FONTE_caso3.md`: proveniência, dicionário e limitações dos dados do Caso 3.
 
-## Conferência
+| Caso | Dados | Carregamento e consultas | Desenho em D3 |
+|---|---|---|---|
+| 1 | `public/imigracao_eua.csv` | `src/imigracao.js`, `src/main.js` | `src/plot.js` |
+| 2 | `public/queijos_europa.csv` | `src/queijos.js`, `src/main_caso2.js` | `src/plot_caso2.js` |
+| 3 | `public/preocupacoes_eua.csv` | `src/preocupacoes.js`, `src/main_caso3.js` | `src/plot_caso3.js` |
 
-```sh
-npm run build
-npm run preview
+`src/config.js` configura o DuckDB-Wasm. Os códigos e CSVs dos Casos 1 e 2 foram preservados na integração.
+Cada caso tem IDs próprios. Os listeners dos Casos 2 e 3 não substituem a inicialização do Caso 1.
+
+## Uso do DuckDB e interpretação
+
+- Caso 1: consulta e valida os dados e calcula porcentagens e números em milhões.
+- Caso 2: valida os três países, ordena a produção e calcula o índice relativo à Alemanha em SQL.
+- Caso 3: valida dez temas, ordena os valores e calcula diferenças em SQL a cada mudança de referência.
+
+No Caso 2, as matrizes representam um índice, não participação na produção total da UE.
+No Caso 3, as categorias não são mutuamente exclusivas e os percentuais não somam 100%.
+Uma diferença de 10 pontos percentuais não significa aumento de 10% nem mudança no tempo.
+A escala do Design B permanece fixa entre −25 e +25 p.p. ao mudar a referência.
+
+## Conferência e versão de produção
+
+```powershell
+npm.cmd run build
+npm.cmd run preview
 ```
 
-Na página principal, confira os dois gráficos do Caso 1 e, abaixo, o Caso 2:
-três pontos, três matrizes de cem pontos e a mensagem de três países validados.
-Alemanha deve ter 100 pontos azuis, França 79 e Itália 58. Os rótulos mantêm
-100,0%, 79,2% e 58,3%. As imagens originais dependem de internet.
+Confira os seis gráficos e as mensagens de validação dos Casos 2 e 3.
+No Caso 2, as matrizes devem conter 100, 79 e 58 pontos azuis.
+No Caso 3, confira as dez barras e os dez pontos, a ordenação alfabética e a troca de referência.
+Com criminalidade (42%) como referência, inflação deve aparecer em +10 p.p. e mudanças climáticas em −12 p.p.
+
+As imagens originais dos três casos estão incluídas em `public/`, com os créditos e links das fontes preservados na página. Os links para os artigos externos exigem internet.
+Os CSVs e os arquivos do DuckDB são servidos pelo projeto. Nenhuma biblioteca de gráficos de alto nível é usada.
+O ZIP inclui o código-fonte e o relatório; `node_modules` e `dist` são gerados pelos comandos acima.
