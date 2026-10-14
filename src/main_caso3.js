@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import { Preocupacoes } from './preocupacoes';
 import { designA, designB } from './plot_caso3';
 
-// Listener independente: não substitui o carregamento dos colegas.
+// Listener independente: não substitui o carregamento dos outros casos.
 window.addEventListener('load', async () => {
     const base = new Preocupacoes();
     const status = document.querySelector('#statusCaso3');

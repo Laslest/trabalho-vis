@@ -80,7 +80,7 @@ circle {
 #caso2 .original { width: 600px; max-width: 100%; border: 1px solid #bfbfbf; }
 #statusCaso2 { font-size: 0.9em; }
 
-/* Caso 3: aparência simples, com regras isoladas para não mudar os colegas. */
+/* Caso 3: aparência simples, com regras isoladas para não mudar os outros casos. */
 #caso3 { margin-top: 50px; border-top: 1px solid #bfbfbf; padding-top: 20px; }
 #caso3 .original { width: 600px; max-width: 100%; border: 1px solid #bfbfbf; }
 #caso3 svg { width: 800px; height: 440px; display: block; }

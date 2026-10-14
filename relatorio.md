@@ -57,9 +57,9 @@ O principal problema é que os dois gráficos contam histórias opostas usando o
 
 Isso acontece por causa das escalas. A porcentagem de imigrantes varia uns 10 pontos (de 14,7% em 1910 até 4,7% em 1970). No primeiro gráfico, com eixo de 0 a 16%, essa variação ocupa mais da metade da altura. No segundo, com eixo de 0 a 100%, ocupa só um décimo e a curva fica quase reta.
 
-O segundo gráfico também segue a regra de começar o eixo no zero, que é certa para barras e áreas, mas aqui faz com que a maior parte do gráfico seja uma área cinza que não muda. Como o Fung comenta no post, usar a regra sem pensar na tarefa atrapalha mais do que ajuda.
+O segundo gráfico também segue a regra de começar o eixo no zero, que é certa para barras e áreas, mas aqui faz com que a maior parte do gráfico seja uma área colorida que quase não muda. Como o Fung comenta no post, usar a regra sem pensar na tarefa atrapalha mais do que ajuda.
 
-O uso de área também não é o melhor para essa tarefa. Pela hierarquia de Cleveland e McGill, posição numa escala comum é o canal mais preciso, e para ver tendência uma linha já basta. A área preenchida e suavizada também esconde que existe só um valor por década, e que entre 2010 e 2024 não tem nenhum ponto no meio.
+O uso de área também não é o melhor para essa tarefa. Pela hierarquia de Cleveland e McGill, posição numa escala comum é o canal mais preciso, e para ver tendência uma linha já basta. A área preenchida e suavizada também esconde em quais anos existe medição de fato.
 
 Por último, os gráficos não têm nenhum contexto: não mostram o valor de nenhum ano, não marcam o máximo e o mínimo e não mostram o número de imigrantes, que é o dado mais citado nas notícias ("recorde de imigrantes").
 
@@ -172,9 +172,6 @@ DuckDB-Wasm valida três países distintos, valores positivos, o ano 2024 e a
 presença da referência. SQL ordena as produções e calcula o índice. D3 implementa
 as escalas, eixos e marcas, sem bibliotecas de visualização de alto nível.
 
-A integração usa IDs exclusivos e um listener independente para não substituir
-a inicialização do Caso 1. O CSS novo fica limitado à seção do Caso 2. O código e os dados do Caso 1 são preservados. O conteúdo de seu relatório é incorporado a este documento.
-
 ### 2.3. Caso 3 — Preocupações nos Estados Unidos (2024–2025)
 
 #### Original e contexto
@@ -271,12 +268,11 @@ no Design A, na tabela e nos títulos das marcas. Não se trata de evolução te
 DuckDB-Wasm carrega o CSV, verifica dez IDs, temas e ordens distintos e percentuais
 finitos entre 0 e 100. SQL ordena as barras e calcula as diferenças por uma consulta
 com a linha de referência. D3 implementa escalas, eixos, marcas e rótulos. O código é
-comentado e segue a divisão dos colegas entre carregamento, consultas e desenho.
+comentado e separa carregamento, consultas e desenho em arquivos diferentes.
 
 A seção usa IDs e estilos próprios para evitar interferir nos demais casos. Há seletores
 com rótulos, uma tabela textual, descrições das marcas e rolagem horizontal para preservar
-a leitura dos gráficos em telas estreitas. O relatório permanece em Markdown, como no
-projeto dos colegas.
+a leitura dos gráficos em telas estreitas.
 
 Os percentuais foram transcritos de rótulos inteiros. Não há microdados, margem de erro,
 ponderações ou abertura demográfica; portanto, as diferenças não demonstram significância

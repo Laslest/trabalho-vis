@@ -5,8 +5,8 @@ O projeto segue a estrutura dos exemplos da aula: Vite, módulos JavaScript e Du
 
 ## Como abrir e executar
 
-1. Extraia o ZIP usando **Extrair tudo** no Windows.
-2. No VS Code, use **Arquivo → Abrir Pasta** e escolha a pasta `trabalho-vis-integrado`, que contém `package.json`, `index.html` e este README. Não abra o ZIP diretamente.
+1. Clone o repositório: `git clone https://github.com/Laslest/trabalho-vis.git`
+2. No VS Code, use **Arquivo → Abrir Pasta** e escolha a pasta `trabalho-vis`, que contém `package.json`, `index.html` e este README.
 3. Abra **Terminal → Novo Terminal** nessa pasta.
 4. Com Node.js e npm instalados, execute:
 
@@ -21,7 +21,7 @@ Não é necessário instalar DuckDB separadamente: DuckDB-Wasm executa no navega
 Não abra `index.html` com duplo clique, pois os módulos e arquivos de dados precisam do servidor.
 
 Se aparecer `ENOENT` ou “Could not read package.json”, o terminal está na pasta errada.
-Abra a pasta que contém esse arquivo; a extração do ZIP pode criar uma pasta externa adicional.
+Abra a pasta que contém esse arquivo.
 
 ## Casos integrados
 
@@ -32,14 +32,12 @@ Abra a pasta que contém esse arquivo; a extração do ZIP pode criar uma pasta 
 | 3 — Preocupações nos EUA | Ten pie charts. Are you worried yet? | Barras horizontais | Diferenças em pontos percentuais para um tema escolhido |
 
 Os três casos estão no mesmo `index.html`. Os links no início da página levam a cada seção.
-A parte sobre preocupações segue os mesmos títulos “Original”, “Design A” e “Design B”, fontes e organização dos colegas.
 
 ## Onde editar
 
 - `index.html`: títulos, textos, fontes exibidas na página e imagens originais.
 - `index.css`: aparência; estilos dos Casos 2 e 3 estão limitados às respectivas seções.
 - `relatorio.md`: relatório final integrado, com introdução, três análises, discussão e referências bibliográficas na seção 4.
-- `relatorio_caso1.md`: documento anterior do Caso 1, mantido como registro; o relatório de entrega é `relatorio.md`.
 - `public/FONTE_caso3.md`: proveniência, dicionário e limitações dos dados do Caso 3.
 
 | Caso | Dados | Carregamento e consultas | Desenho em D3 |
@@ -76,4 +74,4 @@ Com criminalidade (42%) como referência, inflação deve aparecer em +10 p.p. e
 
 As imagens originais dos três casos estão incluídas em `public/`, com os créditos e links das fontes preservados na página. Os links para os artigos externos exigem internet.
 Os CSVs e os arquivos do DuckDB são servidos pelo projeto. Nenhuma biblioteca de gráficos de alto nível é usada.
-O ZIP inclui o código-fonte e o relatório; `node_modules` e `dist` são gerados pelos comandos acima.
+`node_modules` e `dist` são gerados pelos comandos acima e não vão para o repositório.
