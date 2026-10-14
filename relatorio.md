@@ -11,10 +11,11 @@ O Caso 1, **Imigrantes nos Estados Unidos**, foi escolhido por mostrar como esca
 e a representação de uma proporção ou de seu complemento podem mudar a mensagem.
 O Caso 2, **Produção de queijo na Europa**, foi escolhido para discutir a dificuldade
 de comparar quantidades representadas por pictogramas em perspectiva.
-Os dois casos aparecem na mesma página HTML, com seus originais e dois redesigns.
-
-Este documento reúne os casos implementados. O Caso 3 ainda não foi fornecido pelo
-terceiro integrante e deverá ser incluído antes da entrega final do trabalho.
+O Caso 3, **Preocupações nos Estados Unidos**, foi escolhido pela dificuldade de
+comparar dez pizzas e pela necessidade de distinguir percentuais independentes de
+partes de um total. Os três casos aparecem na mesma página HTML, cada um com seu
+original e dois redesigns. Os critérios de seleção foram a presença de um problema
+visual identificável, dados disponíveis e tarefas que justificassem duas propostas distintas.
 
 ## 2. Análise dos casos
 
@@ -174,40 +175,141 @@ as escalas, eixos e marcas, sem bibliotecas de visualização de alto nível.
 A integração usa IDs exclusivos e um listener independente para não substituir
 a inicialização do Caso 1. O CSS novo fica limitado à seção do Caso 2. O código e os dados do Caso 1 são preservados. O conteúdo de seu relatório é incorporado a este documento.
 
-### 2.3. Caso 3 — A integrar
+### 2.3. Caso 3 — Preocupações nos Estados Unidos (2024–2025)
 
-O terceiro integrante deverá acrescentar o original e seu contexto, os dados e
-atributos, a crítica, os dois redesigns, suas justificativas, comparação e limitações.
+#### Original e contexto
+
+O infográfico **What Americans Worry About**, da Statista Consumer Insights, foi
+analisado por Kaiser Fung no artigo **Ten pie charts. Are you worried yet?**, publicado
+no Junk Charts em 27/10/2025. A imagem apresenta uma pizza para cada um de dez temas.
+A pergunta é: quais temas os respondentes dos Estados Unidos consideram entre os
+mais importantes para o país e como seus percentuais se comparam?
+
+O rodapé informa 60.000 respondentes, de 18 a 64 anos, com coleta de outubro de 2024
+a setembro de 2025. São exibidos dez de 18 temas pesquisados. Usamos a imagem histórica
+reproduzida no Junk Charts; a página direta da Statista não estava acessível durante
+a coleta. O subtítulo da imagem orienta a interpretação: temas citados entre os mais
+importantes, e não necessariamente a única preocupação principal de cada pessoa.
+
+#### Dados e tarefas
+
+Os dez percentuais transcritos são: inflação e custo de vida 52%; criminalidade 42%;
+situação econômica 40%; saúde e seguridade social 40%; pobreza 37%; moradia 36%;
+educação 33%; imigração 31%; desemprego 31%; mudanças climáticas 30%.
+
+| Atributo | Tipo e função |
+|---|---|
+| id | identificador do tema, usado no seletor de referência |
+| categoria / categoria_original | nominal; tradução em português e rótulo original em inglês |
+| percentual | quantitativo, percentual publicado entre 0 e 100 |
+| ordem_original | ordinal, posição de leitura no infográfico |
+| diferenca (derivado) | quantitativo, percentual do tema menos o da referência, em p.p. |
+
+As tarefas são identificar liderança e empates, comparar percentuais e medir a distância
+entre um tema e outro. A soma dos valores é 372%: as categorias não representam partes
+mutuamente exclusivas de um total. Não normalizamos a soma nem calculamos “outros” por
+subtração de 100%. O CSV contém valores publicados, não respostas individuais.
+
+#### Crítica do original
+
+As pizzas usam ângulo e área para representar cada percentual. Comparar dez figuras
+separadas exige deslocar a atenção entre elas e lembrar tamanhos, enquanto diferenças
+pequenas e empates ficam difíceis de perceber. Os rótulos numéricos acabam realizando
+boa parte do trabalho de comparação. Pela hierarquia de percepção gráfica discutida
+por Cleveland e McGill, posições numa escala comum favorecem comparações mais precisas.
+
+Cada pizza pode representar a parcela que citou um tema e seu complemento, mas o
+conjunto não constitui uma divisão única da população em dez grupos. A repetição de
+pizzas exige explicar essa distinção. Cores diferentes e ilustrações identificam os
+temas, mas não oferecem uma escala quantitativa comum. A disposição em grade também
+interrompe a leitura sequencial de um ranking.
+
+#### Design A — Barras horizontais
+
+Cada tema ocupa uma linha. O comprimento da barra codifica o percentual numa escala
+comum de 0 a 100%, com origem zero e rótulo numérico. A ordem inicial é decrescente;
+um seletor permite consultar os nomes em ordem alfabética. Os empates mantêm a ordem
+original como critério secundário no ranking.
+
+Barras horizontais acomodam nomes longos e permitem comparar os extremos alinhados.
+A cor única evita atribuir significado quantitativo a cores diferentes. A escala até
+100% explicita o denominador, embora deixe espaço vazio e reduza a separação visual
+de diferenças pequenas. Inflação lidera com 52%; economia e saúde empatam em 40%,
+e imigração e desemprego em 31%. O próprio artigo do Junk Charts propõe barras como
+alternativa; adotamos essa referência e acrescentamos ordenação e contexto explícito.
+
+#### Design B — Diferenças para uma referência
+
+Um gráfico de pontos divergentes mostra a diferença de cada tema para o escolhido
+no seletor. A referência inicial é criminalidade (42%). Inflação fica em +10 p.p.
+e mudanças climáticas em −12 p.p. A posição horizontal codifica a diferença, uma linha
+marca zero e segmentos ligam os pontos a essa origem.
+
+A escala permanece entre −25 e +25 p.p., suficiente para todos os pares, cuja maior
+distância é 22 p.p. A ordem decrescente dos percentuais também permanece fixa ao trocar
+a referência, permitindo acompanhar os mesmos temas. Azul-esverdeado indica diferenças
+negativas, laranja positivas e cinza zero. Posição, sinal e rótulos repetem a informação,
+para que a interpretação não dependa apenas da cor.
+
+Esse design prioriza distâncias a uma referência escolhida. Seu custo é exigir que o
+leitor compreenda pontos percentuais e acompanhe a referência. Zero indica igualdade
+de percentuais publicados, não ausência de preocupação. Os valores absolutos permanecem
+no Design A, na tabela e nos títulos das marcas. Não se trata de evolução temporal.
+
+#### Comparação entre os designs
+
+| Aspecto | Design A | Design B |
+|---|---|---|
+| Tarefa principal | ranking, valores absolutos e empates | comparar diferenças para um tema |
+| Marca e canal | barras, comprimento e posição alinhada | pontos, posição horizontal em escala divergente |
+| Melhoria | substitui comparação de ângulos por escala comum | explicita distâncias que o original exige calcular |
+| Trade-off | domínio até 100% ocupa espaço e comprime pequenas diferenças | exige interpretar referência e pontos percentuais |
+| Contexto de uso | leitura inicial em notícia ou relatório | exploração e comparação entre pares |
+
+#### Implementação e limitações
+
+DuckDB-Wasm carrega o CSV, verifica dez IDs, temas e ordens distintos e percentuais
+finitos entre 0 e 100. SQL ordena as barras e calcula as diferenças por uma consulta
+com a linha de referência. D3 implementa escalas, eixos, marcas e rótulos. O código é
+comentado e segue a divisão dos colegas entre carregamento, consultas e desenho.
+
+A seção usa IDs e estilos próprios para evitar interferir nos demais casos. Há seletores
+com rótulos, uma tabela textual, descrições das marcas e rolagem horizontal para preservar
+a leitura dos gráficos em telas estreitas. O relatório permanece em Markdown, como no
+projeto dos colegas.
+
+Os percentuais foram transcritos de rótulos inteiros. Não há microdados, margem de erro,
+ponderações ou abertura demográfica; portanto, as diferenças não demonstram significância
+estatística nem devem ser generalizadas para todas as idades. O limite de respostas por
+pessoa não foi verificado. O recorte de dez temas não permite avaliar os oito omitidos.
 
 ## 3. Discussão final
 
-Nos dois casos implementados, o principal aprendizado é que dados corretos não
-asseguram uma interpretação adequada. No Caso 1, escalas e o uso do complemento
-da proporção produzem impressões diferentes sobre a mesma população. No Caso 2,
-a perspectiva, o tamanho dos desenhos e os recortes dos queijos tornam ambígua
-a comparação visual entre os países.
+Os três casos mostram que dados corretos não asseguram interpretação adequada. No
+Caso 1, escalas e o complemento da proporção produzem impressões diferentes. No Caso 2,
+perspectiva e recortes tornam ambígua a quantidade representada. No Caso 3, pizzas
+separadas dificultam comparação e exigem esclarecer que os temas não dividem um único total.
 
-As decisões de design procuram tornar explícitas as medidas e referências. A linha
-com pontos do Caso 1 favorece a leitura da tendência e do contexto histórico; suas
-barras acrescentam os números absolutos. Os pontos do Caso 2 favorecem comparação
-em milhões de toneladas; suas matrizes explicam a produção relativa à Alemanha.
-Os canais visuais e as escalas são escolhidos conforme essas tarefas.
+Um padrão comum é tornar explícitas medidas, denominadores e referências. A linha do
+Caso 1 prioriza tendência e contexto histórico; suas barras acrescentam números absolutos.
+Os pontos do Caso 2 comparam volumes; as matrizes usam Alemanha = 100. As barras do Caso 3
+comparam percentuais; os pontos mostram distâncias para uma referência selecionada.
+A marca e o canal devem ser escolhidos conforme a tarefa: posição alinhada favorece
+comparação, enquanto uma linha também explicita ordem temporal. Cor atua como destaque
+ou informação redundante, sem substituir escalas e rótulos.
 
-Os redesigns também envolvem trade-offs. O Caso 1 amplia o período do original e
-combina censos com dados de pesquisa amostral. A linha não comunica sozinha a
-contagem absoluta; nas barras, a porcentagem depende de rótulos. No Caso 2, o recorte
-contém apenas três países e usa números arredondados, com o dado francês provisório.
-As matrizes arredondam novamente o preenchimento e exigem compreender a referência
-Alemanha = 100, que não corresponde à participação no total europeu.
+As propostas têm custos. O Caso 1 amplia o período e combina censos com pesquisa amostral;
+nas barras, os anos têm espaços iguais e as porcentagens dependem do texto. O Caso 2
+usa três países e valores arredondados, com dado francês provisório; as matrizes adicionam
+arredondamento e exigem compreender o índice. O Caso 3 preserva apenas dez temas e valores
+inteiros; sua comparação relativa exige conhecer a referência e pontos percentuais.
+Nenhum redesign resolve ausência de dados ou incerteza não publicada.
 
-D3.js permite controlar marcas, escalas e eixos diretamente. DuckDB-Wasm explicita
-as transformações em SQL e verifica condições básicas dos dados. Essas validações
-não eliminam as limitações das fontes nem demonstram precisão estatística.
-As imagens originais externas dependem de conexão com a internet.
-
-A comparação entre os três casos e os aprendizados finais do grupo deverão ser
-completados após a inclusão do Caso 3, sem atribuir resultados a uma implementação
-ainda ausente.
+D3.js permite controlar diretamente marcas, escalas e eixos. DuckDB-Wasm documenta
+transformações em SQL e verifica condições básicas dos dados. Essas validações não
+comprovam precisão estatística nem substituem a avaliação das fontes. O projeto integra
+os três casos no mesmo padrão visual, com seis gráficos novos e um relatório comum.
+As imagens originais dos três casos foram incluídas localmente, com seus créditos e links de origem preservados.
 
 ## 4. Referências
 
@@ -221,3 +323,6 @@ ainda ausente.
 - [Imagem original analisada](https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2026/01/jorgecamoes_eurostatcheeses.jpg).
 - [Eurostat — Key figures on the European food chain, edição 2025](https://ec.europa.eu/eurostat/documents/15216629/22711561/KS-01-25-049-EN-N.pdf/86247e8d-0fb6-1fff-f14a-6c25114cb138).
 - [Eurostat — tabela Production of cheese, tag00040](https://ec.europa.eu/eurostat/databrowser/product/view/tag00040).
+- [FUNG, K. Ten pie charts. Are you worried yet? Junk Charts, 27 out. 2025](https://www.junkcharts.com/ten-pie-charts-are-you-worried-yet/).
+- [STATISTA. What Americans Worry About. Consumer Insights](https://www.statista.com/chart/35340/respondents-rank-issues-united-states/). Recorte histórico: out. 2024–set. 2025, reproduzido no Junk Charts.
+- [Imagem histórica da Statista utilizada na transcrição](https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2025/10/statista_americanworries.jpeg).

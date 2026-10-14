@@ -79,3 +79,20 @@ circle {
 #caso2 .diferenca { fill: #e0e0e0; }
 #caso2 .original { width: 600px; max-width: 100%; border: 1px solid #bfbfbf; }
 #statusCaso2 { font-size: 0.9em; }
+
+/* Caso 3: aparência simples, com regras isoladas para não mudar os colegas. */
+#caso3 { margin-top: 50px; border-top: 1px solid #bfbfbf; padding-top: 20px; }
+#caso3 .original { width: 600px; max-width: 100%; border: 1px solid #bfbfbf; }
+#caso3 svg { width: 800px; height: 440px; display: block; }
+#caso3 .graficoCaso3 { max-width: 100%; overflow-x: auto; }
+#caso3 .preocupacao { fill: steelblue; }
+#caso3 .zero { stroke: #555; stroke-width: 1.5; }
+#caso3 .distancia { stroke: #aaa; }
+#caso3 circle.acima { fill: #b75518; }
+#caso3 circle.abaixo { fill: #087f82; }
+#caso3 circle.igual { fill: #666; }
+#caso3 select { padding: 4px; font: inherit; max-width: 100%; }
+#caso3 th, #caso3 td { text-align: left; padding: 5px 15px 5px 0; }
+#caso3 [tabindex]:focus { outline: 2px solid #b75518; }
+#statusCaso3 { font-size: 0.9em; }
+nav { margin-bottom: 30px; }

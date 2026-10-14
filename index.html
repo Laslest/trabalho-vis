@@ -3,11 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Visualização de dados - Casos 1 e 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualização de dados - Casos 1, 2 e 3</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <nav aria-label="Casos do trabalho"><a href="#caso1">Caso 1: imigração</a> |
+        <a href="#caso2">Caso 2: queijos</a> |
+        <a href="#caso3">Caso 3: preocupações</a></nav>
+    <section id="caso1">
     <h1>Caso 1: proporção de imigrantes nos EUA (1850 a 2024)</h1>
 
     <h2>Original</h2>
@@ -18,9 +23,9 @@
         (eixo de 0 a 16%) e o segundo mostra os não imigrantes (eixo de 0 a 100%).
     </p>
     <div class="originais">
-        <img src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/2026/09/hansjorgschulz_immigration_1.jpg"
+        <img src="imigracao_original_1.jpg"
              alt="Gráfico original 1">
-        <img src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/2026/09/hansjorgschulz_immigration_2.jpg"
+        <img src="imigracao_original_2.jpg"
              alt="Gráfico original 2">
     </div>
 
@@ -34,6 +39,8 @@
         Fonte dos dados: U.S. Census Bureau (Gibson e Lennon, 1999; Gibson e Jung, 2006; ACS 2010 e 2024).
     </p>
 
+    </section>
+
     <!-- Caso 2 integrado abaixo; IDs exclusivos preservam os gráficos do Caso 1. -->
     <section id="caso2">
         <h1>Caso 2: produção de queijo na Europa (2024)</h1>
@@ -42,7 +49,7 @@
             <a href="https://www.junkcharts.com/a-cheesy-graphic/">A cheesy graphic</a>
             do Junk Charts (28/01/2026). Compara Alemanha, França e Itália usando desenhos de queijos.</p>
         <img class="original"
-            src="https://storage.ghost.io/c/00/37/003715d2-9957-4ad9-99ad-f1deb54be59a/content/images/size/w1200/2026/01/jorgecamoes_eurostatcheeses.jpg"
+            src="queijos_original.jpg"
             alt="Infográfico do Eurostat com queijos de tamanhos e recortes diferentes: Alemanha 2,4 milhões de toneladas, França 1,9 e Itália 1,4, em 2024.">
         <p>Os valores publicados são arredondados e o dado francês é provisório. Estes são os três países do original,
             não toda a produção da União Europeia.</p>
@@ -60,8 +67,48 @@
             dados de 2024. <a href="queijos_europa.csv">Dados CSV</a>.
             <a href="https://ec.europa.eu/eurostat/databrowser/product/view/tag00040">Base de dados Eurostat</a>.</p>
     </section>
+    <!-- Caso 3: mesmo padrão de seção, títulos e SVG dos outros casos. -->
+    <section id="caso3">
+        <h1>Caso 3: preocupações nos Estados Unidos (2024–2025)</h1>
+        <h2>Original</h2>
+        <p>Infográfico da Statista analisado por Kaiser Fung em
+            <a href="https://www.junkcharts.com/ten-pie-charts-are-you-worried-yet/">Ten pie charts. Are you worried yet?</a>
+            no Junk Charts (27/10/2025). Mostra dez de 18 temas pesquisados, usando uma pizza por tema.</p>
+        <img class="original" src="preocupacoes_original.jpeg"
+            alt="Dez pizzas da Statista: inflação 52%, criminalidade 42%, economia e saúde 40%, pobreza 37%, moradia 36%, educação 33%, imigração e desemprego 31%, mudanças climáticas 30%.">
+        <p>Os percentuais representam temas citados entre os mais importantes para o país.
+            As categorias não são mutuamente exclusivas e não somam 100%.</p>
+        <p id="statusCaso3" role="status">Carregando dados do Caso 3…</p>
+        <h2>Design A: barras horizontais dos percentuais</h2>
+        <p>Uma escala comum de 0 a 100% facilita comparar os valores e reconhecer empates.</p>
+        <p><label for="ordemCaso3">Ordenação:</label>
+            <select id="ordemCaso3" disabled><option value="percentual">Maior percentual</option>
+                <option value="alfabetica">Ordem alfabética</option></select></p>
+        <div class="graficoCaso3"><svg id="caso3DesignA" viewBox="0 0 800 440" role="img"
+            aria-label="Barras com os percentuais dos dez temas citados"></svg></div>
+        <h2>Design B: diferenças em relação a um tema</h2>
+        <p><label for="referenciaCaso3">Comparar com:</label>
+            <select id="referenciaCaso3" disabled></select></p>
+        <p id="notaReferenciaCaso3" aria-live="polite"></p>
+        <p>Azul-esverdeado: abaixo da referência. Laranja: acima. Cinza: mesmo percentual.
+            Diferença em pontos percentuais = percentual do tema − percentual da referência.
+            A escala e a ordem dos temas permanecem fixas ao trocar a referência.</p>
+        <div class="graficoCaso3"><svg id="caso3DesignB" viewBox="0 0 800 440" role="img"
+            aria-label="Pontos com as diferenças em pontos percentuais para a referência selecionada"></svg></div>
+        <p>O Design A prioriza ranking e valores absolutos. O B permite comparar distâncias,
+            mas exige compreender pontos percentuais. As diferenças não representam mudança no tempo
+            nem significância estatística.</p>
+        <details><summary>Consultar os valores dos dez temas</summary>
+            <table id="dadosCaso3"><thead><tr><th scope="col">Tema</th><th scope="col">Percentual</th></tr></thead><tbody></tbody></table>
+        </details>
+        <p class="fonte">Fonte: Statista Consumer Insights, 60.000 respondentes dos EUA, 18–64 anos,
+            outubro de 2024 a setembro de 2025. Valores transcritos da imagem histórica reproduzida no Junk Charts.
+            <a href="preocupacoes_eua.csv">Dados CSV</a>.
+            <a href="https://www.statista.com/chart/35340/respondents-rank-issues-united-states/">Página da Statista</a>.</p>
+    </section>
     <script type="module" src="src/main.js"></script>
     <script type="module" src="src/main_caso2.js"></script>
+    <script type="module" src="src/main_caso3.js"></script>
 </body>
 
 </html>
